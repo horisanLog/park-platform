@@ -1,5 +1,8 @@
 
 # GraphQL Code Generator で TypeScript の型を自動生成する（ Next.js + Rails ）
+
+※ 今回はNext.js + RailsでGraphQLの構築　＋ Code Generatorができるようにするのが目的なので、dockerやコンポーネントのリファクタ等は力を入れていない
+
 ## backend
 
 以下に説明を記載
@@ -12,13 +15,8 @@
 
 graqphqlで定義したスキーマやクエリなどの情報に基づいて型を自動生成してくれる
 
-参考資料
-- [公式リファレンス](https://www.graphql-code-generator.com/)
-- [GraphQL Code Generator で TypeScript の型を自動生成する](https://techlife.cookpad.com/entry/2021/03/24/123214)
-
 ### 使用方法
 
-実行コマンド
 ```
 docker-compose run --rm frontend npm run codegen
 ```
@@ -80,6 +78,10 @@ export default TagsPage
 
 ```
 
+参考資料
+- [公式リファレンス](https://www.graphql-code-generator.com/)
+- [GraphQL Code Generator で TypeScript の型を自動生成する](https://techlife.cookpad.com/entry/2021/03/24/123214)
+
 ### mock msw
 
 apiのmockサーバーを定義できるライブラリ
@@ -90,7 +92,7 @@ Graphqlのリクエスト、レスポンスもサポートされている
 - [公式リファレンス](https://mswjs.io/)
 - [mswとgraphql codegenでGraphQLをモックし、効果的で効率的なReactのテストを書く](https://mswjs.io/)https://zenn.dev/ynakamura/articles/5d92bd34a363c6)
 
-## マニュアル
+## アプリ立ち上げ
 
 ### server start
 ```sh
