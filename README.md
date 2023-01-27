@@ -116,7 +116,7 @@ $ docker-compose run --rm backend rails db:migrate
 $ docker-compose run --rm frontend npm run test
 ```
 
-
+実行結果
 ```ts
 > app@0.1.0 test
 > jest
@@ -158,7 +158,7 @@ Time:        19.866 s
 ```
 
 
-# ②Firestoreのリアルタイム更新
+# Firestoreのリアルタイム更新
 
 後日記載
 
