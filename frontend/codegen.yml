@@ -1,6 +1,6 @@
 overwrite: true
 schema:
-  - 'http://backend:3000/graphql'
+  - 'http://backend:8000/graphql'
 documents: './graphql/**/*.graphql.ts'
 generates:
   graphql/generated/types.ts:
