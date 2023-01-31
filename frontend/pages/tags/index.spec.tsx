@@ -27,5 +27,7 @@ describe('タグ一覧ページ', () => {
     await waitFor(async() => {
       expect(await screen.getByText('test1')).toBeTruthy()
     })
+
+    expect(renderPage).toMatchSnapshot()
   })
 })

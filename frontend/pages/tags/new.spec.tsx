@@ -37,11 +37,12 @@ describe('Sampleコンポーネント', () => {
     const submitButton = screen.getByText('タグの追加')
     fireEvent.click(submitButton)
 
+    expect(renderPage).toMatchSnapshot()
+
     await waitFor(() =>
       expect(mutationInterceptor).toHaveBeenCalledWith({
         input: {
           params: {
-            id: '1',
             name: 'test1',
             tagNumber: 1,
             activeFlag: true,

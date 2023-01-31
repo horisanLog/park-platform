@@ -4,7 +4,8 @@ import Home from './'
 
 describe('Sampleコンポーネント', () => {
   test('レンダーされる', () => {
-    const { getByText } = render(<Home />)
-    expect(getByText('home')).toBeTruthy()
+    const home = render(<Home />)
+    expect(home.getByText('home')).toBeTruthy()
+    expect(home).toMatchSnapshot()
   })
 })
