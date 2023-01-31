@@ -10,12 +10,12 @@ type Response = {
 export const useApi = () => {
   const fetcher = (url: string): Promise<Test> => axios(url).then((res) => res.data)
 
-  const { data, error } = useSWR('http://localhost:8000/api/hello', fetcher)
+  const { data, error } = useSWR('http://localhost/api/hello', fetcher)
 
   const saveDate = async () => {
     // const fetcher = (url: string): Promise<Test> => axios(url).then((res) => res.data)
 
-    // const { data, error } = useSWR('http://localhost:8000/api/hello', fetcher)
+    // const { data, error } = useSWR('http://localhost/api/hello', fetcher)
     const result: Response = await api.post(
       'hello',
       { test: 'test' },

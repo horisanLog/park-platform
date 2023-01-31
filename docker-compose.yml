@@ -16,37 +16,37 @@ services:
     build:
       context: ./
       dockerfile: ./docker/backend/Dockerfile
-    command: bash -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 3000 -b '0.0.0.0'"
+    command: bash -c "rm -f tmp/pids/server.pid && cp -rf /tmp/public/* /app/public/ && mkdir -p tmp/sockets && bundle exec puma -C config/puma.rb"
     volumes:
       - "./backend:/var/www/backend" 
+      - public-data:/app/public
+      - tmp-data:/app/tmp
+      - log-data:/app/log
     environment:
       TZ: Asia/Tokyo
       RAILS_ENV: development
-      API_DOMAIN: "localhost:8000"
-      BASE_URL: "http://localhost:3000"
     tty: true
     stdin_open: true
     ports:
-      - "8000:3000"
+      - "8000:8000"
     depends_on:
       - db
     links:
       - db
 
   web:
-    image: nginx
-    container_name: web
     environment:
       TZ: Asia/Tokyo
+    build: container/dev-nginx
     volumes:
-      - ./container/nginx/default.conf:/etc/nginx/conf.d/default.conf
-      - ./container/nginx/log:/var/log/nginx
-      # - ./backend/public:/backend/public
-      # - ./backend/tmp:/backend/tmp
+      - ./container/dev-nginx/log:/var/log/nginx
+      - ./backend/public:/backend/public
+      - ./backend/tmp:/backend/tmp
     ports:
       - "80:80"
     depends_on:
       - frontend
+      - backend
 
   frontend:
     container_name: frontend
@@ -62,3 +62,7 @@ services:
     tty: true
     volumes:
       - "./frontend:/var/www/frontend" 
+volumes:
+  public-data:
+  tmp-data:
+  log-data:
