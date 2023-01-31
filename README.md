@@ -102,6 +102,10 @@ $ docker-compose up
 http://localhost:3000 // frontend
 http://localhost:8000 // backend
 
+(2023/1/31)
+nginxを導入したことで、railsはpumaを使用している
+http://localhostでfrontend・backend共にアクセスできるようにnginx.confでlocationを設定している
+
 ※ 上手く立ち上がらない場合、node_moduleを削除したりして、npmのインストールをし直してください
 
 ```
